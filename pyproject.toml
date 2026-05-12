@@ -1,0 +1,58 @@
+[project]
+authors = [
+    { name = "hammadb", email = "hammad@trychroma.com" },
+    { name = "Patrick Jiang", email = "pj20@illinois.edu" },
+]
+name = "harness-1"
+version = "0.1.0"
+description = "Reproduction code for HarnesS-1"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.72.0",
+    "chromadb==1.4.0",
+    "datasets>=4.3.0",
+    "fastembed>=0.7.3",
+    "onnxruntime==1.21.0",
+    "openai-harmony>=0.0.8", # (hammadb) higher versions break on my machine so I'm pinning it for now
+    "openai>=2.6.1",
+    "pydantic>=2.12.3",
+    "pydantic-settings>=2.6.1",
+    "pysqlite3-binary>=0.5.4",
+    "tokenizers>=0.22.1",
+    "transformers>=4.45.0",
+    "peft>=0.17.0",
+    "trl>=0.24.0",
+    "tinker>=0.3.0",
+    "structlog>=25.5.0",
+    "rich>=14.2.0",
+    "tenacity>=9.1.2",
+    "baseten-performance-client>=0.0.12",
+    "tiktoken>=0.12.0",
+    "chz>=0.4.0",
+    "langchain-text-splitters>=1.1.0",
+    "tqdm>=4.67.1",
+    "matplotlib>=3.10.8",
+    "json-repair>=0.55.0",
+    "tinker-cookbook",
+    "wandb>=0.25.1",
+    "modal>=1.0.0",
+    "wikipedia-api>=0.14.1",
+]
+
+[tool.uv.sources]
+tinker-cookbook = { path = "tinker-cookbook", editable = true }
+
+[dependency-groups]
+dev = ["mypy>=1.18.2", "pytest>=8.3.3", "ruff>=0.14.3"]
+
+[[tool.mypy.overrides]]
+module = "datasets.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "openai_harmony.*"
+ignore_missing_imports = true
+
+[project.optional-dependencies]
+vllm = ["vllm>=0.13.0"]

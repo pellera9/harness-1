@@ -1,0 +1,112 @@
+[project]
+name = "tinker_cookbook"
+version = "0.1.0"
+description = "Implementations of post-training algorithms using the Tinker API"
+readme = "README.md"
+authors = [
+{ name = "Tinker authors", email = "tinker@thinkingmachines.ai" },
+]
+requires-python = ">=3.11"
+dependencies = [
+    "chz",
+    "cloudpickle",
+    "datasets",
+    "numpy",
+    "pillow",
+    "rich",
+    "termcolor",
+    "tinker>=0.9.0",
+    "torch",
+    "torchvision",
+    "transformers>=4.57.6,<5.0.0",
+    "blobfile",
+    "anyio",
+    "pylatexenc",
+    "sympy",
+    "textarena>=0.7.4",
+    "math-verify",
+    "scipy",
+    "pytest>=9.0.2",
+    "tiktoken>=0.12.0", # Required for Kimi tokenizer
+    "tqdm",
+    "modal",
+]
+
+[project.urls]
+Homepage = "https://thinkingmachines.ai/tinker"
+Repository = "https://github.com/thinking-machines-lab/tinker"
+Documentation = "https://tinker-docs.thinkingmachines.ai/"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "ruff",
+    "pyright",
+]
+vector-search = [
+    "chromadb",
+    "google-genai",
+    "huggingface_hub"
+]
+wandb = [
+    "wandb",
+]
+neptune-scale = [
+    "neptune-scale>=0.27.0",
+]
+trackio = [
+    "trackio<1.0.0",
+]
+verifiers = [
+    "verifiers>=0.1.9,<0.1.10",
+    "openai",
+]
+inspect = [
+    "inspect-ai",
+    "inspect-evals>=0.3.106",
+    "instruction-following-eval",
+]
+all = [
+    "tinker_cookbook[vector-search]",
+    "tinker_cookbook[wandb]",
+    "tinker_cookbook[neptune-scale]",
+    "tinker_cookbook[trackio]",
+    "tinker_cookbook[verifiers]",
+    "tinker_cookbook[inspect]",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tinker_cookbook"]
+exclude = ["*_test.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tinker_cookbook", "tests"]
+python_files = ["*_test.py", "test_*.py"]
+norecursedirs = ["tinker_cookbook/scripts"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests requiring TINKER_API_KEY and network access",
+]
+
+[tool.ruff]
+line-length = 100
+exclude = [
+    # Vendored from HuggingFace, kept identical to upstream
+    "kimi-k2.5-hf-tokenizer/tool_declaration_ts.py",
+]
+
+[tool.pyright]
+include = ["tinker_cookbook"]
+exclude = [
+    ".venv",
+    # Vendored from HuggingFace, kept identical to upstream
+    "kimi-k2.5-hf-tokenizer/tool_declaration_ts.py",
+]
+
+[tool.uv.sources]
+instruction-following-eval = { git = "https://github.com/josejg/instruction_following_eval", rev = "0c495b2f95155e8b10acb919ae283bfb4d5be6e2" }
