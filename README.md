@@ -1,7 +1,7 @@
 # HarnesS-1
 
 [![Tinker Inference](https://img.shields.io/badge/Tinker-Inference-073f3d?labelColor=white)](https://github.com/pat-jj/harness-1/blob/main/inference/tinker_inference.md)
-[![Model Checkpoint](https://img.shields.io/badge/Hugging%20Face-Checkpoint-FAFF36?logo=huggingface&logoColor=FFCA03)](https://huggingface.co/pat-jj/harness-1)
+[![Model Checkpoint](https://img.shields.io/badge/Hugging%20Face-Checkpoint-FFCA03?logo=huggingface&logoColor=FFCA03)](https://huggingface.co/pat-jj/harness-1)
 [![arXiv](https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg?logo=arxiv&logoColor=white)](https://arxiv.org/)
 
 HarnesS-1 is a stateful search harness for training and evaluating retrieval
