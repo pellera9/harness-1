@@ -4,10 +4,13 @@
 [![Model Checkpoint](https://img.shields.io/badge/Hugging%20Face-Checkpoint-FFCA03?logo=huggingface&logoColor=FFCA03)](https://huggingface.co/pat-jj/harness-1)
 [![arXiv](https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg?logo=arxiv&logoColor=white)](https://arxiv.org/)
 
-HarnesS-1 is a stateful search harness for training and evaluating retrieval
-agents. It combines a GPT-OSS policy with explicit working memory, evidence
-tracking, document curation, verification, and token-budget controls so the
-model can run long multi-turn search trajectories over large corpora.
+HarnesS-1 is a 20B search agent trained with reinforcement learning inside a
+stateful retrieval harness. The harness maintains the recoverable search state:
+candidate documents, curated evidence, evidence links, verification records, and
+budget-aware context.
+
+The policy keeps the semantic decisions: what to search, which documents to
+inspect or curate, what claims to verify, and when the evidence is sufficient.
 
 ![HarnesS-1 average search performance](assets/teaser_recall_barchart.png)
 
