@@ -1,5 +1,9 @@
 # HarnesS-1
 
+[![Tinker Inference](https://img.shields.io/badge/Tinker-Inference-000000)](https://github.com/pat-jj/harness-1/blob/main/inference/tinker_inference.md)
+[![Model Checkpoint](https://img.shields.io/badge/%F0%9F%A4%97%20Model-Hugging%20Face-yellow)](https://huggingface.co/pat-jj/harness-1)
+[![arXiv](https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg)](https://arxiv.org/)
+
 HarnesS-1 is a stateful search harness for training and evaluating retrieval
 agents. It combines a GPT-OSS policy with explicit working memory, evidence
 tracking, document curation, verification, and token-budget controls so the

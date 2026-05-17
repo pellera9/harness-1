@@ -7,7 +7,7 @@ same search-agent harness settings as the original Tinker inference run.
 
 ## Checkpoint
 
-Use the step-29 sampler checkpoint:
+Use the published sampler checkpoint:
 
 ```text
 tinker://ed693b03-4126-5b46-92bd-4b888b55234a:train:0/sampler_weights/000029
