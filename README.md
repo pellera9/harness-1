@@ -89,21 +89,27 @@ uv run python tests/smoke_cli.py
 
 ## Inference
 
-Run a basic Hugging Face model-load test after the merged model has been
-uploaded:
+The released merged checkpoint is published as
+[`pat-jj/harness-1`](https://huggingface.co/pat-jj/harness-1) on Hugging Face.
+Run a basic model-load test with:
 
 ```bash
 uv run python inference/hf_inference.py \
-  --model ${HARNESS1_HF_MODEL:-harness-1} \
+  --model ${HARNESS1_HF_MODEL:-pat-jj/harness-1} \
   --prompt "Briefly describe HarnesS-1."
 ```
+
+For Tinker-hosted inference with the published Tinker checkpoint, see
+[`inference/tinker_inference.md`](inference/tinker_inference.md). That document
+contains the public Tinker checkpoint path, required harness flags, and a
+BrowseComp+ example run.
 
 For local vLLM serving:
 
 ```bash
 uv sync --extra vllm
 uv run python inference/vllm_local_inference.py serve \
-  --model ${HARNESS1_HF_MODEL:-harness-1} \
+  --model ${HARNESS1_HF_MODEL:-pat-jj/harness-1} \
   --served-model-name harness-1
 ```
 
@@ -127,7 +133,11 @@ Evaluate HarnesS-1 search behavior with:
 PYTHONPATH=. uv run python inference/evaluate_harness1.py --help
 ```
 
-Transfer evaluation, ablations, and baseline runners are documented in
+For published-checkpoint evaluation, use either the Hugging Face model
+[`pat-jj/harness-1`](https://huggingface.co/pat-jj/harness-1) with a local
+serving backend, or the Tinker-hosted checkpoint documented in
+[`inference/tinker_inference.md`](inference/tinker_inference.md). Transfer
+evaluation, ablations, and baseline runners are documented in
 `inference/README.md`. The default HarnesS-1 search operating point is
 temperature `1.0`.
 
