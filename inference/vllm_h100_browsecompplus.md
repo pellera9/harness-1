@@ -2,11 +2,11 @@
 
 This guide describes how to serve the released HarnesS-1 Hugging Face checkpoint
 with vLLM on local H100 GPUs and run the BrowseComp+ evaluation through the same
-multi-turn search harness used by `eval_sft_ultra_0417.py`.
+multi-turn search harness included in this repository.
 
 The goal is to validate that the merged Hugging Face checkpoint
-`pat-jj/harness-1` matches the original Tinker-checkpoint behavior on
-BrowseComp+ when run with the HarnesS-1 operating point.
+`pat-jj/harness-1` runs the HarnesS-1 operating point on BrowseComp+ through the
+public vLLM evaluation entrypoint.
 
 ## What To Run
 
@@ -134,11 +134,10 @@ arrays as `prompt` and to return generated token IDs when
 
 ## BrowseComp+ Parity Eval
 
-Run this from the main research repository that contains
-`scripts/eval_hf_harness1_pipeline_smoke.py` and the original
-`train_rl_ultra_0417.py` harness. If you are running from the public `harness-1`
-release repo, use the equivalent evaluation entrypoint only after confirming it
-uses the same `SlidingWindowSearchEnv` behavior and BrowseComp+ indexes.
+Run this from the public `harness-1` repository root. The vLLM evaluator is
+`inference/evaluate_harness1_vllm.py`; it uses `SlidingWindowSearchEnv` from
+`training.train_rl` and sends raw action tokens returned by vLLM directly into
+the environment.
 
 Set the exact HarnesS-1 flags:
 
@@ -169,32 +168,35 @@ export MAX_TURNS=35
 Run a 10-query smoke/parity pass:
 
 ```bash
-mkdir -p tmp/harness1_vllm_bcplus
+RUN_DIR=tmp/harness1_vllm_bcplus
+mkdir -p "$RUN_DIR/trajectories"
+export TRAJECTORY_SAVE_PATH="$RUN_DIR/trajectories"
 
-PYTHONPATH=. uv run python scripts/eval_hf_harness1_pipeline_smoke.py \
-  --backend vllm \
-  --base-url http://localhost:8000/v1 \
-  --model harness-1 \
-  --query-id-file tmp/browsecomp100_component_ablation_t1/query_ids.json \
-  --limit 10 \
+PYTHONPATH=. uv run python inference/evaluate_harness1_vllm.py \
   --dataset browsecompplus \
   --split test \
   --collection-split test \
+  --n-queries 10 \
+  --seed 42 \
   --temperature 1.0 \
   --max-turns 40 \
   --max-tokens 2048 \
-  --output tmp/harness1_vllm_bcplus/eval_results.json
+  --parallel 1 \
+  --base-url http://127.0.0.1:8000/v1 \
+  --model harness-1 \
+  --partial-output "$RUN_DIR/partial_results.jsonl" \
+  --output "$RUN_DIR/eval_results.json"
 ```
 
-For the full BrowseComp+ component-ablation query set, change `--limit 10` to
-`--limit 100`.
+For a larger run, increase `--n-queries`. To evaluate an exact fixed set, pass
+the IDs directly with `--query-ids 1029 579 ...` instead of `--n-queries`.
 
 ## Why This Matches The Tinker Harness
 
-`scripts/eval_hf_harness1_pipeline_smoke.py` is the intended parity bridge:
+`inference/evaluate_harness1_vllm.py` is the public vLLM parity bridge:
 
-- it imports `SlidingWindowSearchEnv` from `train_rl_ultra_0417`
-- it uses the same tool loop as `eval_sft_ultra_0417.py`
+- it imports `SlidingWindowSearchEnv` from `training.train_rl`
+- it uses the same public tool loop as `inference/evaluate_harness1.py`
 - it sends action tokens returned by the policy directly into `env.step(...)`
 - it uses `temperature=1.0` and `max_tokens=2048`, matching the Tinker eval
 - its vLLM backend sends raw token IDs to `/v1/completions`

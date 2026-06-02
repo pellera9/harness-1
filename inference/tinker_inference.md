@@ -3,7 +3,7 @@
 This document describes the Tinker-backed evaluation setup used for the
 BrowseComp+ HarnesS-1 results reported in Table 2 ("Search quality across
 benchmarks"). The BrowseComp+ run uses a fixed 100-query test subset and the
-same search-agent harness settings as the original Tinker inference run.
+HarnesS-1 search-agent settings documented below.
 
 ## Checkpoint
 
@@ -41,11 +41,10 @@ For this release repo, use:
 python inference/evaluate_harness1.py
 ```
 
-This is the release-copy equivalent of the original
-`eval_sft_ultra_0417.py` evaluator: it uses the same multi-turn
-`SlidingWindowSearchEnv` behavior, but imports it from `training.train_rl`
-instead of `train_rl_ultra_0417`. Do not rely on script defaults when
-reproducing Table 2; pass all parameters explicitly as shown below.
+This public evaluator uses `SlidingWindowSearchEnv` from `training.train_rl`,
+sends sampled action tokens through the same multi-turn environment, and writes
+per-query metrics to JSON. Do not rely on script defaults when reproducing Table
+2; pass all parameters explicitly as shown below.
 
 ## Environment
 
@@ -85,10 +84,9 @@ export SAVE_FULL_TRAJECTORIES=0
 ## Fixed BrowseComp+ Query Set
 
 The example run below uses the first 50 query IDs from the fixed BrowseComp+
-test-query set used for the Table 2-style BrowseComp+ evaluation. In the
-original workspace, the 100-query source set was saved as
-`tmp/browsecomp100_component_ablation_t1/query_ids.json`; this 50-query example
-uses its first 50 entries.
+test-query set used for the Table 2-style BrowseComp+ evaluation. The selected
+50-query subset is included inline so the command can be run from this release
+repository without any additional query-id files.
 
 ```bash
 mkdir -p tmp/browsecomp50_table2
@@ -128,7 +126,7 @@ cmd = [
     "--parallel", "1",
     "--checkpoints",
     "harness1=tinker://ed693b03-4126-5b46-92bd-4b888b55234a:train:0/sampler_weights/000029",
-    "--output", "tmp/tinker_table2_browsecompplus_50/eval_sft_results.json",
+    "--output", "tmp/tinker_table2_browsecompplus_50/eval_results.json",
     "--query-ids",
     *qids,
 ]
@@ -161,10 +159,10 @@ The important inference parameters are:
 ## Example 50-Query Result
 
 We ran the 50-query example above and stopped after the 50th completed episode.
-The summary was saved to:
+The per-query results and aggregate summary were saved to:
 
 ```text
-tmp/tinker_table2_browsecompplus/eval_sft_results_50_summary.json
+tmp/tinker_table2_browsecompplus_50/eval_results.json
 ```
 
 Observed metrics over those 50 completed BrowseComp+ queries:
