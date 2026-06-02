@@ -1,6 +1,6 @@
 # Training
 
-This folder contains the HarnesS-1 training pipeline:
+This folder contains the Harness-1 training pipeline:
 
 1. `generate_sft_data.py`: generate Harness-1 SFT trajectories.
 2. `train_sft.py`: train the SFT warm-start checkpoint with Tinker.

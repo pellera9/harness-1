@@ -1,4 +1,4 @@
-"""Evaluate HarnesS-1 against a local vLLM OpenAI-compatible endpoint.
+"""Evaluate Harness-1 against a local vLLM OpenAI-compatible endpoint.
 
 This mirrors inference/evaluate_harness1.py, but replaces the Tinker sampling
 client with raw token-id calls to vLLM /v1/completions. It is intended for

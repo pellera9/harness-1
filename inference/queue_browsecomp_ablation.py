@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run real BrowseComp+ component ablations for HarnesS-1.
+"""Run real BrowseComp+ component ablations for Harness-1.
 
 Each condition evaluates the same fixed query IDs, so the resulting
 BrowseComp+ ablation table is paired across queries instead of guessed.

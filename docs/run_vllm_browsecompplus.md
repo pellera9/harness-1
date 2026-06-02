@@ -1,6 +1,6 @@
-# Run HarnesS-1 With vLLM And BrowseComp+
+# Run Harness-1 With vLLM And BrowseComp+
 
-This guide shows how to serve the released HarnesS-1 checkpoint with vLLM and,
+This guide shows how to serve the released Harness-1 checkpoint with vLLM and,
 optionally, run the BrowseComp+ search evaluation.
 
 Use the minimum setup if you only want to confirm that the model serves locally.
@@ -9,7 +9,7 @@ retrieval backend.
 
 ## What You Will Run
 
-HarnesS-1 is a long-horizon search agent. At evaluation time, the model produces
+Harness-1 is a long-horizon search agent. At evaluation time, the model produces
 tool calls, retrieves and reads documents, maintains a curated evidence set, and
 is scored against evidence labels.
 
@@ -43,7 +43,7 @@ intended path.
 
 ## Hugging Face Weights
 
-The released HarnesS-1 weights are hosted on Hugging Face:
+The released Harness-1 weights are hosted on Hugging Face:
 
 ```text
 https://huggingface.co/pat-jj/harness-1
@@ -209,7 +209,7 @@ The Chroma deployment must contain the BrowseComp+ test collection expected by
 the dataset loader, normally `browsecomp_plus_test`, with document IDs matching
 the BrowseComp+ qrels.
 
-Enable the full HarnesS-1 operating point in the same shell that will run the
+Enable the full Harness-1 operating point in the same shell that will run the
 evaluation:
 
 ```bash
@@ -341,7 +341,7 @@ sets for stable reporting.
 
 ## Glossary
 
-- HarnesS-1 operating point: the component flags and generation settings used for
+- Harness-1 operating point: the component flags and generation settings used for
   the full search harness, including curation, verification, evidence graph, and
   token-budget controls.
 - BrowseComp+: a benchmark for browsing and evidence-seeking questions.
@@ -353,7 +353,7 @@ sets for stable reporting.
 - Raw `/v1/completions`: the OpenAI-compatible completion endpoint used with
   pre-tokenized prompts.
 - Integer token prompts: prompt inputs sent as token IDs rather than plain text.
-- `V8D_` flags: environment flags that enable HarnesS-1 search components.
+- `V8D_` flags: environment flags that enable Harness-1 search components.
 
 ## Common Issues
 
@@ -389,7 +389,7 @@ export VLLM_MOE_USE_DEEP_GEMM=0
 ### `/v1/completions` returns text but no token IDs
 
 Use a newer vLLM build and rerun the raw completion smoke test. The evaluator
-requires token IDs to reconstruct the exact HarnesS-1 action tokens.
+requires token IDs to reconstruct the exact Harness-1 action tokens.
 
 ### Evaluation metrics are far below expectation
 

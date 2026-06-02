@@ -1,4 +1,4 @@
-"""Evaluate HarnesS-1 checkpoints with the current RL environment.
+"""Evaluate Harness-1 checkpoints with the current RL environment.
 
 Runs full multi-turn search episodes against held-out queries using the
 current `train_rl.SlidingWindowSearchEnv`, so results are directly
@@ -303,7 +303,7 @@ def print_results_table(name: str, results: List[Dict]) -> None:
 
 
 async def main() -> None:
-    parser = argparse.ArgumentParser(description="Evaluate HarnesS-1 checkpoints with current RL env")
+    parser = argparse.ArgumentParser(description="Evaluate Harness-1 checkpoints with current RL env")
     parser.add_argument("--dataset", default="browsecompplus", help="Dataset name")
     parser.add_argument(
         "--split",

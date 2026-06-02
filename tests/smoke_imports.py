@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Import smoke test for the HarnesS-1 repository."""
+"""Import smoke test for the Harness-1 repository."""
 
 from __future__ import annotations
 

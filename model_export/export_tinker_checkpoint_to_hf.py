@@ -67,7 +67,7 @@ def main() -> None:
             repo_id=args.repo_id,
             repo_type="model",
             folder_path=str(output_path),
-            commit_message="Upload HarnesS-1 merged model",
+            commit_message="Upload Harness-1 merged model",
         )
 
     print("Merged model written to", output_path)

@@ -1,1 +1,1 @@
-"""Shared HarnesS-1 harness package."""
+"""Shared Harness-1 harness package."""

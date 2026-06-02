@@ -1,11 +1,11 @@
 # H100 vLLM Inference Instructions
 
-This guide describes how to serve the released HarnesS-1 Hugging Face checkpoint
+This guide describes how to serve the released Harness-1 Hugging Face checkpoint
 with vLLM on local H100 GPUs and run the BrowseComp+ evaluation through the same
 multi-turn search harness included in this repository.
 
 The goal is to validate that the merged Hugging Face checkpoint
-`pat-jj/harness-1` runs the HarnesS-1 operating point on BrowseComp+ through the
+`pat-jj/harness-1` runs the Harness-1 operating point on BrowseComp+ through the
 public vLLM evaluation entrypoint.
 
 ## What To Run
@@ -28,7 +28,7 @@ The parity evaluation should use:
 - `max_tokens=2048`
 - `max_turns=40`
 - BrowseComp+ test split
-- the full HarnesS-1 component set enabled
+- the full Harness-1 component set enabled
 - the raw vLLM `/v1/completions` API, not chat completions
 
 ## Environment
@@ -55,11 +55,11 @@ export PYTHONPATH=.
 ```
 
 The evaluation requires Chroma/OpenAI/reranker configuration exactly as normal
-HarnesS-1 evaluation does. At minimum, make sure `.env.local` contains working
+Harness-1 evaluation does. At minimum, make sure `.env.local` contains working
 values for the BrowseComp+ Chroma collections, OpenAI embeddings/search support,
 and `BASETEN_API_KEY` if reranking is enabled.
 
-## Serve HarnesS-1 With vLLM
+## Serve Harness-1 With vLLM
 
 Start vLLM on the H100 machine. For 1 H100:
 
@@ -139,7 +139,7 @@ Run this from the public `harness-1` repository root. The vLLM evaluator is
 `training.train_rl` and sends raw action tokens returned by vLLM directly into
 the environment.
 
-Set the exact HarnesS-1 flags:
+Set the exact Harness-1 flags:
 
 ```bash
 export V8D_SUBTRACTIVE_CURATION=1

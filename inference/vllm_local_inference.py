@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Serve or query HarnesS-1 with a local vLLM OpenAI-compatible endpoint."""
+"""Serve or query Harness-1 with a local vLLM OpenAI-compatible endpoint."""
 
 from __future__ import annotations
 
@@ -76,7 +76,7 @@ def parse_args() -> argparse.Namespace:
     q = sub.add_parser("query", help="Query an already-running server")
     q.add_argument("--url", default="http://localhost:8000")
     q.add_argument("--served-model-name", default="harness-1")
-    q.add_argument("--prompt", default="What is HarnesS-1?")
+    q.add_argument("--prompt", default="What is Harness-1?")
     q.add_argument("--temperature", type=float, default=0.0)
     q.add_argument("--max-tokens", type=int, default=128)
     q.add_argument("--timeout", type=int, default=120)

@@ -1,4 +1,4 @@
-"""Evaluate HarnesS-1 checkpoints on transfer datasets.
+"""Evaluate Harness-1 checkpoints on transfer datasets.
 
 This script keeps the `evaluate_harness1.py` harness/eval flow unchanged
 while swapping retrieval backends by dataset:
@@ -419,7 +419,7 @@ def _build_tooling(
 
 async def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Evaluate HarnesS-1 checkpoints on transfer datasets."
+        description="Evaluate Harness-1 checkpoints on transfer datasets."
     )
     parser.add_argument(
         "--dataset",

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Minimal Hugging Face inference for the released HarnesS-1 checkpoint.
+"""Minimal Hugging Face inference for the released Harness-1 checkpoint.
 
 This script is intentionally small: it verifies that the merged model at
 `$HARNESS1_HF_MODEL` can be loaded with the standard Transformers API and used for
@@ -41,7 +41,7 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Treat --model as a PEFT adapter and load it on top of --base-model.",
     )
-    parser.add_argument("--prompt", default="Briefly describe HarnesS-1 in one sentence.")
+    parser.add_argument("--prompt", default="Briefly describe Harness-1 in one sentence.")
     parser.add_argument("--max-new-tokens", type=int, default=64)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--device-map", default="auto")

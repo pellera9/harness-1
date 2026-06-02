@@ -1,9 +1,9 @@
-# Tinker Inference for HarnesS-1
+# Tinker Inference for Harness-1
 
 This document describes the Tinker-backed evaluation setup used for the
-BrowseComp+ HarnesS-1 results reported in Table 2 ("Search quality across
+BrowseComp+ Harness-1 results reported in Table 2 ("Search quality across
 benchmarks"). The BrowseComp+ run uses a fixed 100-query test subset and the
-HarnesS-1 search-agent settings documented below.
+Harness-1 search-agent settings documented below.
 
 ## Checkpoint
 
@@ -19,19 +19,9 @@ The corresponding training weights path is:
 tinker://ed693b03-4126-5b46-92bd-4b888b55234a:train:0/weights/000029
 ```
 
-Both paths should be published through Tinker before external users run the
-evaluation:
-
-```python
-import tinker
-
-rest = tinker.ServiceClient().create_rest_client()
-for path in [
-    "tinker://ed693b03-4126-5b46-92bd-4b888b55234a:train:0/sampler_weights/000029",
-    "tinker://ed693b03-4126-5b46-92bd-4b888b55234a:train:0/weights/000029",
-]:
-    rest.publish_checkpoint_from_tinker_path(path).result()
-```
+Both Tinker checkpoint paths are already public. External users can use the
+sampler checkpoint path above directly for evaluation; no separate checkpoint
+publishing step is required.
 
 ## Harness Equivalence
 
@@ -52,7 +42,7 @@ Run from the `harness-1` repository root after installing dependencies and
 setting `TINKER_API_KEY` and the search/index credentials required by
 `harness.config`.
 
-Set the exact HarnesS-1 harness flags:
+Set the exact Harness-1 harness flags:
 
 ```bash
 export PYTHONPATH=.

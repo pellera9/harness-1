@@ -18,7 +18,7 @@ browsing tasks where systems must find and curate supporting evidence; running
 the evaluator produces recall, trajectory recall, final-answer recall,
 precision, and per-query trajectory artifacts.
 
-![HarnesS-1 average search performance](assets/teaser_recall_barchart.png)
+![Harness-1 average search performance](assets/teaser_recall_barchart.png)
 
 ## Quickstart
 
@@ -76,7 +76,7 @@ usage restrictions, and checkpoint metadata.
 - `docs/`: user-facing guides and runbooks.
 - `harness/`: shared search harness, tools, trajectory, task, reranking, and
   configuration modules.
-- `inference/`: HarnesS-1 evaluation, component ablations, HF inference, and
+- `inference/`: Harness-1 evaluation, component ablations, HF inference, and
   vLLM inference utilities.
 - `inference/baselines/`: in-domain and transfer baseline evaluation runners.
 - `training/`: SFT data generation, SFT training, RL training, and launch scripts.
@@ -163,7 +163,7 @@ Run a basic Hugging Face model-load test with:
 ```bash
 uv run python inference/hf_inference.py \
   --model ${HARNESS1_HF_MODEL:-pat-jj/harness-1} \
-  --prompt "Briefly describe HarnesS-1."
+  --prompt "Briefly describe Harness-1."
 ```
 
 For Tinker-hosted inference with the published Tinker checkpoint, see
@@ -201,7 +201,7 @@ The detailed vLLM guide explains how to read final metrics including:
 
 ## Glossary
 
-- HarnesS-1 operating point: the component flags and generation settings used for
+- Harness-1 operating point: the component flags and generation settings used for
   the full search harness.
 - BrowseComp+: a benchmark for browsing and evidence-seeking questions.
 - qrels: relevance labels that map query IDs to gold or evidence document IDs.
@@ -212,7 +212,7 @@ The detailed vLLM guide explains how to read final metrics including:
 - Raw `/v1/completions`: the OpenAI-compatible completion endpoint used with
   pre-tokenized prompts.
 - Integer token prompts: prompt inputs sent as token IDs instead of plain text.
-- `V8D_` flags: environment flags that enable HarnesS-1 search components.
+- `V8D_` flags: environment flags that enable Harness-1 search components.
 
 ## Known Limitations
 
@@ -241,6 +241,7 @@ paths, secrets, and service-specific assumptions unless they are clearly marked
 as optional.
 
 ## Citation
+
 If you use Harness-1 in your work, please cite:
 
 ```bibtex

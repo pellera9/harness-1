@@ -1,6 +1,6 @@
 # Inference And Evaluation
 
-This folder contains HarnesS-1 inference and evaluation scripts. The default
+This folder contains Harness-1 inference and evaluation scripts. The default
 released model is `$HARNESS1_HF_MODEL`.
 
 The public merged checkpoint is hosted at
@@ -13,7 +13,7 @@ Use this for a direct Transformers load/generation smoke test:
 ```bash
 uv run python inference/hf_inference.py \
   --model ${HARNESS1_HF_MODEL:-harness-1} \
-  --prompt "Briefly describe HarnesS-1 in one sentence."
+  --prompt "Briefly describe Harness-1 in one sentence."
 ```
 
 ## vLLM Inference
@@ -39,13 +39,13 @@ Query the server:
 uv run python inference/vllm_local_inference.py query \
   --url http://localhost:8000 \
   --served-model-name harness-1 \
-  --prompt "What is HarnesS-1?"
+  --prompt "What is Harness-1?"
 ```
 
 `vllm_modal_inference.py` provides the Modal deployment version.
 
 For the full tested vLLM + BrowseComp+ runbook, including the required
-HarnesS-1 operating-point flags and evaluation command, see
+Harness-1 operating-point flags and evaluation command, see
 `../docs/run_vllm_browsecompplus.md`.
 
 ## Harness-1 Search Evaluation

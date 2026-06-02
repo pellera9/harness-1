@@ -1,6 +1,6 @@
 # Datasets
 
-This repository includes the evaluation code used by HarnesS-1, but it does not
+This repository includes the evaluation code used by Harness-1, but it does not
 bundle large retrieval corpora or private Chroma indexes.
 
 ## Public Ready-To-Run Path: BrowseComp+
@@ -61,7 +61,7 @@ At minimum, each indexed chunk should preserve:
 The evaluator looks up the collection name from the dataset class, so keeping
 the collection name `browsecomp_plus_test` is the least surprising path.
 
-### 4. Run a BrowseComp+ HarnesS-1 eval
+### 4. Run a BrowseComp+ Harness-1 eval
 
 Set your checkpoint path privately in the environment, then run:
 
@@ -93,4 +93,4 @@ pipeline:
 https://github.com/chroma-core/context-1-data-gen
 
 Once your corpora are indexed in Chroma with compatible collection names and
-document IDs, the same HarnesS-1 evaluation scripts can target those datasets.
+document IDs, the same Harness-1 evaluation scripts can target those datasets.
