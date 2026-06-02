@@ -240,11 +240,14 @@ feature requests. Contributions should keep public documentation free of private
 paths, secrets, and service-specific assumptions unless they are clearly marked
 as optional.
 
-## License And Citation
+## Citation
+If you use Harness-1 in your work, please cite:
 
-The repository does not currently include a `LICENSE` file or BibTeX citation in
-this checkout. Add the intended license, citation, and model usage terms before a
-public release.
-
-For checkpoint-specific metadata, see the Hugging Face model card at
-`pat-jj/harness-1`.
+```bibtex
+@article{jiang2026harness,
+  title={Harness-1: Reinforcement Learning for Search Agents with State-Externalizing Harnesses},
+  author={Jiang, Pengcheng and Shi, Zhiyi and Hong, Kelly and Xu, Xueqiang and Sun, Jiashuo and Sun, Jimeng and Bashir, Hammad and Han, Jiawei},
+  journal={arXiv preprint arXiv:2606.02373},
+  year={2026}
+}
+```
