@@ -12,13 +12,6 @@ budget-aware context. The policy keeps the semantic decisions: what to search,
 which documents to inspect or curate, what claims to verify, and when the
 evidence is sufficient.
 
-This repository is intended for researchers, evaluation authors, and engineers
-who want to serve the released checkpoint, inspect the search harness, or
-reproduce BrowseComp+ evaluation runs. BrowseComp+ is a benchmark for difficult
-browsing tasks where systems must find and curate supporting evidence; running
-the evaluator produces recall, trajectory recall, final-answer recall,
-precision, and per-query trajectory artifacts.
-
 ![Harness-1 average search performance](assets/teaser_recall_barchart.png)
 
 ## Quickstart
